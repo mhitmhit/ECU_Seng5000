@@ -2,6 +2,7 @@ package chapter03;
 /**
    A bank account has a balance that can be changed by 
    deposits and withdrawals.
+   this is the bank account class file
 */
 public class BankAccount
 {  
@@ -32,6 +33,8 @@ public class BankAccount
    {  
       balance = balance + amount;
    }
+ 
+   
 
    /**
       Withdraws money from the bank account.
