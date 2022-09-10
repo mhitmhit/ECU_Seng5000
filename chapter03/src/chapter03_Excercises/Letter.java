@@ -11,13 +11,12 @@ public class Letter {
 		sender = "sincerly,\n\n".concat(from);
 		receiver = "Dear " + to + ":";
 		body = "";
-		letter = receiver+"\n" + body + "\n" + sender;
-		
+		letter = receiver.concat("\n\n") + "[blank]\n\n" + sender;
 	}
 	
 	public void addLine(String line) {
-		body = body.concat(line);
-		System.out.println(body);
+		body = body.concat(line).concat("\n");
+		letter = receiver.concat("\n\n") + body.concat("\n") + sender;
 	}
 	
 	public String getText() {

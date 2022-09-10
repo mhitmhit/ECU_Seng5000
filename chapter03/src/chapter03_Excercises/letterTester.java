@@ -7,6 +7,10 @@ public class letterTester {
 
 		Letter let1 = new Letter("jon", "carmen");
 		let1.addLine("test");
+		let1.addLine("test");
+		let1.addLine("test");
+		let1.addLine("test");
+		
 		let1.letterPrinter();
 	}
 

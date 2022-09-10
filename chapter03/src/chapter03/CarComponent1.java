@@ -42,7 +42,8 @@ public class CarComponent1 extends JComponent {
 	      g2.draw(frontTire);
 	      Ellipse2D.Double rearTire = new Ellipse2D.Double(40, 30, 10, 10);
 	      g2.draw(rearTire);
-	      
+	      Ellipse2D.Double rearTire2 = new Ellipse2D.Double(70, 30, 10, 10);
+	      g2.draw(rearTire2);
 	   }
 	
 }
