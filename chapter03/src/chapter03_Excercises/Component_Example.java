@@ -1,4 +1,4 @@
-package chapter03_Exercises;
+package chapter03_Excercises;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
