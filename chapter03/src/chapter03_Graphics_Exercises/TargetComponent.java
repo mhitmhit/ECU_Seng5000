@@ -1,5 +1,6 @@
 package chapter03_Graphics_Exercises;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -16,7 +17,7 @@ public class TargetComponent extends JComponent {
 		return value;
 	}
 	
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	   {
 	      Graphics2D g2 = (Graphics2D) g;
 
@@ -24,11 +25,21 @@ public class TargetComponent extends JComponent {
 	      Ellipse2D.Double circle2 = new Ellipse2D.Double(calculateCenter(200), calculateCenter(200), 200, 200);
 	      Ellipse2D.Double circle3 = new Ellipse2D.Double(calculateCenter(100), calculateCenter(100), 100, 100);
 	      
-	      
+	      g2.setColor(Color.YELLOW);
+	      g2.fill(getBounds());
 	      
 	      g2.draw(circle1);
 	      g2.draw(circle2);
 	      g2.draw(circle3);
+	      
+	      g2.setColor(Color.BLACK);
+	      g2.fill(circle1);
+	      g2.setColor(Color.WHITE);
+	      g2.fill(circle2);
+	      
+	      g2.setColor(Color.BLACK);
+	      g2.fill(circle3);
+	      
 	      
 	      
 	      

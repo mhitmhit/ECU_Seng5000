@@ -1,7 +1,10 @@
 package chapter03_Graphics_Exercises;
 
-public class Target {
+public class Playground {
+
 	public static void main(String[] args) {
-		TargetViewer target1 = new TargetViewer();
+		// TODO Auto-generated method stub
+		new MyFrame();
 	}
+
 }

@@ -2,20 +2,18 @@ package chapter03_Graphics_Exercises;
 
 import javax.swing.JFrame;
 
-
-public class TargetViewer {
-	public static void main(String[] args) {
-	{
+public class OlympicRingsViewer {
+	public static void main(String[] args)
+	   {
 	      JFrame frame = new JFrame();
 
-	      frame.setSize(500, 500);
-	      frame.setTitle("Target Practice");
+	      frame.setSize(300, 400);
+	      frame.setTitle("Olympic rings");
 	      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	      TargetComponent component = new TargetComponent();
+	      OlympicRingsComponent component = new OlympicRingsComponent();
 	      frame.add(component);
-	 
+
 	      frame.setVisible(true);
 	   }
-	}
 }
