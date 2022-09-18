@@ -2,23 +2,35 @@ package A2_Q5;
 
 public class SalariedEmployee {
 	/**
-	 * Attributes common to all persons
-	 */
-//	private String name;
-//	private int socialSecurityNumber;
-//	private int age;
-//	private char gender;
-//	private String address;
-//	private int telephone;
-	/**
-	 * Attributes common to all Employees
-	 */
-//	private String department;
-//	private String jobTitle;
-//	private int yearOfHire;
-	/**
 	 * Attributes for salaried Employees
 	 */
+	private String department;
+	private String jobTitle;
+	private int yearOfHire;
 	private double annualSalary;
+	
+	public SalariedEmployee(String employeeDepartment, String employeeJobTitle, int empYearOfHire, double empSalary) {
+		department = employeeDepartment;
+		jobTitle = employeeJobTitle;
+		yearOfHire = empYearOfHire;
+		annualSalary = empSalary;
+	}
+
+	/**
+	 * Methods to get salaried employee attributes
+	 */
+	public String getDepartment() {
+		return department;
+	}
+	public String getJobTitle() {
+		return jobTitle;
+	}
+	public int getYearOfHire() {
+		return yearOfHire;
+	}
+	public double getAnnualSalary() {
+		return annualSalary;
+	}
+
 	
 }
