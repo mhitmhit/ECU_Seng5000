@@ -11,11 +11,13 @@ public class TwoSquareComponent extends JComponent {
 	   {
 	      Graphics2D g2 = (Graphics2D) g;
 
-	      Rectangle box1 = new Rectangle(25, 25, 100, 100);
+	      Rectangle box1 = new Rectangle(0, 100, 100, 100);
+	      
+	      box1.add(0, 10);
 	      g2.draw(box1);
-
+	      
 	      Rectangle box2 = new Rectangle(50, 50, 50, 50);
-	      g2.draw(box2);
+	      //g2.draw(box2);
 	   }
 	
 }
