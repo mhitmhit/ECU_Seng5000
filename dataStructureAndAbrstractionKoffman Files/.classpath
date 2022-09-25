@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="Shapes/" kind="src" path="CH01"/>
+	<classpathentry kind="src" path="CH01/Shapes"/>
+	<classpathentry kind="src" path="CH02-Koffman"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
