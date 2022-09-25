@@ -4,7 +4,7 @@
  *
  * @author Koffman and Wolfgang
  */
-package KW.CH01;
+package book_source_code;
 
 /**
  * The interface for an ATM.

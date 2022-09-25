@@ -6,7 +6,18 @@ package book_source_code;
 public class ATMbankAmerica implements ATM {
 // Insert solution to programming exercise 4, section 1, chapter 1 here
     // The following are all dummy methods
-    /**
+	
+	 /**
+     * Verifies a user's PIN.
+     *
+     * @param pin The user's PIN
+     * @return Whether or not the User's PIN is verified
+     */
+    public boolean verifyPIN(String pin) {
+    	return true;
+    }
+	
+	/**
      * Allows the user to select an account.
      * @return a String representing the account selected
      */
