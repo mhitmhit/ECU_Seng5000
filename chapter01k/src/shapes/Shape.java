@@ -1,4 +1,4 @@
-package KW.CH01.Shapes;
+package shapes;
 
 /**
  * An interface for a geometric shape

@@ -3,7 +3,7 @@
  * Listing 1.7
  * @author Koffman and Wolfgang
  */
-package KW.CH01.Shapes;
+package shapes;
 
 import java.util.Scanner;
 
