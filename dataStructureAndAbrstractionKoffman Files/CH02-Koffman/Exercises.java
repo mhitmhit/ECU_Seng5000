@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Exercises {
 
-// Insert solution to programming exercise 1, section 2, chapter 2 here
+// Insert solution to programming exercise 1, section 2, chapter 02 here
 
-// Insert solution to programming exercise 2, section 2, chapter 2 here
+// Insert solution to programming exercise 2, section 2, chapter 02 here
 }
