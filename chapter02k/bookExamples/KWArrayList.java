@@ -1,5 +1,5 @@
 /*<listing chapter="2" section="4" sequence="1">*/
-package examples;
+package bookExamples;
 
 import java.util.Arrays;
 import java.util.AbstractList;

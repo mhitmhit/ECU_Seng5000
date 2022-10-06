@@ -1,5 +1,5 @@
 /*<listing chapter="2" section="9">*/
-package examples;
+package bookExamples;
 
 import java.util.AbstractSequentialList;
 import java.util.Collection;
