@@ -49,7 +49,7 @@ public class KWLinkedList<E>
      * @throws IndexOutOfBoundsException if the index is out
      *         of range (i &lt; 0 || i &gt; size())
      */
-    @Override
+    
     public void add(int index, E obj) {
         listIterator(index).add(obj);
     }
@@ -59,7 +59,7 @@ public class KWLinkedList<E>
      * @param index Position of item to be retrieved
      * @return The item at index
      */
-    @Override
+    
     public E get(int index) {
         return listIterator(index).next();
     }

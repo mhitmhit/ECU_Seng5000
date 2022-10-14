@@ -44,7 +44,6 @@ public class KWArrayList<E>
      * @param anEntry The value to be added to the list.
      * @return true since the add always succeeds
      */
-    @Override
     public boolean add(E anEntry) {
         if (size == capacity) {
             reallocate();
@@ -62,7 +61,6 @@ public class KWArrayList<E>
      *         is negative or if it is greater than or equal to the
      *         current size
      */
-    @Override
     public E get(int index) {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException(index);
@@ -79,7 +77,7 @@ public class KWArrayList<E>
      *         is negative or if it is greater than or equal to the
      *         current size
      */
-    @Override
+    
     public E set(int index, E newValue) {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException(index);
@@ -97,7 +95,6 @@ public class KWArrayList<E>
      *         is negative or if it is greater than or equal to the
      *         current size
      */
-    @Override
     public E remove(int index) {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException(index);
@@ -122,7 +119,6 @@ public class KWArrayList<E>
      * Get the current size of the array
      * @return The current size of the array
      */
-    @Override
     public int size() {
         return size;
     }
