@@ -1,4 +1,4 @@
-package KW.CH03;
+package Examples;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
