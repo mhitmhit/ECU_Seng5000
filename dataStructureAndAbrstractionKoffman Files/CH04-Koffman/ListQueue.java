@@ -3,13 +3,14 @@ package KW.CH04;
 
 import java.util.Queue;
 import java.util.AbstractQueue;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
  * Implements the Queue interface using a single-linked list.
  * @param <E> the element type
- * @author Koffman & Wolfgang
+ * @author Koffman and Wolfgang
  **/
 public class ListQueue<E> extends AbstractQueue<E>
         implements Queue<E> {
@@ -52,11 +53,24 @@ public class ListQueue<E> extends AbstractQueue<E>
             next = nodeRef;
         }
     } //end class Node
+    
+    // Constructors
+    public ListQueue() {
+        super();
+        front = null;
+        rear = null;
+        size = 0;
+    }
+  
+    public ListQueue(Collection<E> c) {
+        this();
+        c.forEach(item -> offer(item));
+    }
 
     // Methods
     /**
      * Insert an item at the rear of the queue.
-     * @post item is added to the rear of the queue.
+     * postitem is added to the rear of the queue.
      * @param item The element to add
      * @return true (always successful)
      */
@@ -79,7 +93,7 @@ public class ListQueue<E> extends AbstractQueue<E>
     /**
      * Remove the entry at the front of the queue and return it
      * if the queue is not empty.
-     * @post front references item that was second in the queue.
+     * postfront references item that was second in the queue.
      * @return The item removed if successful, or null if not
      */
     @Override
@@ -108,6 +122,11 @@ public class ListQueue<E> extends AbstractQueue<E>
         }
     }
 
-// Insert solution to programming exercise 1, section 7, chapter 4 here
+// Insert solution to programming exercise 1, section 7, chapter 04 here
+
+// Insert solution to programming project 10, chapter 04 here
+    
+// Insert solution to programming project 13, chapter 04 here
+
 }
 /*</listing>*/

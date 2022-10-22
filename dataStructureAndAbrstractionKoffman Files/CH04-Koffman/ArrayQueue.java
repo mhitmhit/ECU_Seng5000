@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * Implements the Queue interface using a circular array.
  * @param <E> The element type
- * @author Koffman & Wolfgang
+ * @author Koffman and Wolfgang
  **/
 public class ArrayQueue<E> extends AbstractQueue<E>
         implements Queue<E> {
@@ -45,11 +45,21 @@ public class ArrayQueue<E> extends AbstractQueue<E>
         rear = capacity - 1;
         size = 0;
     }
+    
+    /**
+     * Construct a queue with the contents of a Collection.The initial capacity 
+     * is set to the size of the collection.
+     * @param c Collection containing initial values.
+     */
+    public ArrayQueue(Collection<E> c) {
+        this(c.size());
+        c.forEach(item -> offer(item));
+    }
 
     // Public Methods
     /**
      * Inserts an item at the rear of the queue.
-     * @post item is added to the rear of the queue.
+     * postitem is added to the rear of the queue.
      * @param item The element to add
      * @return true (always successful)
      */
@@ -63,8 +73,8 @@ public class ArrayQueue<E> extends AbstractQueue<E>
         theData[rear] = item;
         return true;
     }
-
-// Insert solution to programming exercise 3, section 8, chapter 4 here
+    
+// Insert solution to programming exercise 3, section 8, chapter 04 here
 
     /**
      * Returns the item at the front of the queue without removing it.
@@ -83,7 +93,7 @@ public class ArrayQueue<E> extends AbstractQueue<E>
     /**
      * Removes the entry at the front of the queue and returns it
      * if the queue is not empty.
-     * @post front references item that was second in the queue.
+     * postfront references item that was second in the queue.
      * @return The item removed if successful or null if not
      */
     @Override
@@ -97,13 +107,13 @@ public class ArrayQueue<E> extends AbstractQueue<E>
         return result;
     }
 
-// Insert solution to programming exercise 3, section 3, chapter 4 here
+// Insert solution to programming exercise 2, section 7, chapter 04 here
 
     // Private Methods
     /**
      * Double the capacity and reallocate the data.
-     * @pre The array is filled to capacity.
-     * @post The capacity is doubled and the first half of the
+     * prehe array is filled to capacity.
+     * postThe capacity is doubled and the first half of the
      *       expanded array is filled with data.
      */
     @SuppressWarnings("unchecked")
@@ -122,7 +132,7 @@ public class ArrayQueue<E> extends AbstractQueue<E>
     }
 
     /*<listing chapter="4" number="14">*/
-    /** Inner class to implement the Iterator<E> interface. */
+    /** Inner class to implement the Iterator&lt;E&gt; interface. */
     private class Iter implements Iterator<E> {
         // Data Fields
         // Index of next element */
@@ -152,8 +162,8 @@ public class ArrayQueue<E> extends AbstractQueue<E>
 
         /**
          * Returns the next element in the queue.
-         * @pre index references the next element to access.
-         * @post index and count are incremented.
+         * prendex references the next element to access.
+         * postindex and count are incremented.
          * @return The element with subscript index
          */
         @Override
@@ -177,5 +187,10 @@ public class ArrayQueue<E> extends AbstractQueue<E>
         }
     }
     /*</listing>*/
+    
+// Insert solution to programming project 11, chapter 04 here
+
+// Insert solution to programming project 11, chapter 04 here
+
 }
 /*</listing>*/

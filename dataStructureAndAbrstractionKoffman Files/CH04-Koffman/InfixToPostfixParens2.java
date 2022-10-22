@@ -3,13 +3,13 @@ package KW.CH04;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.EmptyStackException;
-import java.util.regex.Pattern;
 import java.util.Scanner;
 import java.util.StringJoiner;
 
 /** Translates an infix expression with parentheses
- *  to a postfix expression.
- *  @author Koffman & Wolfgang
+ *  to a postfix expression. Modified to include programming exercise
+ *  and programming project solutions.
+ *  @author Koffman &amp; Wolfgang
  */
 public class InfixToPostfixParens2 {
     
@@ -17,8 +17,9 @@ public class InfixToPostfixParens2 {
 
     // Nested Class
     /** Class to report a syntax error. */
+    @SuppressWarnings("serial")
     public static class SyntaxErrorException
-            extends Exception {
+            extends RuntimeException {
 
         /**
          * Construct a SyntaxErrorException with the specified
@@ -31,7 +32,8 @@ public class InfixToPostfixParens2 {
     }
     // Data Fields
     /** The operators */
-    private static final String OPERATORS = "-+*/()";
+//    private static final String OPERATORS = "-+*/()";
+// Insert solution to programming project 2, chapter 04 here
     /**
      * The Pattern to extract tokens
      * A token is either a string of digits (\d+)
@@ -39,21 +41,25 @@ public class InfixToPostfixParens2 {
      * or an operator
      */
     private static final String PATTERN =
-            "\\d+\\.\\d*|\\d+|\\p{L}[\\p{L}\\p{N}]*|[" + OPERATORS + "]";
+//            "\\d+\\.\\d*|\\d+|\\p{L}[\\p{L}\\p{N}]*|[" + OPERATORS + "]";
+// Insert solution to programming project 2, chapter 04 here
     /** The precedence of the operators, matches order of OPERATORS. */
-    private static final int[] PRECEDENCE = {1, 1, 2, 2, -1, -1};
+//    private static final int[] PRECEDENCE = {1, 1, 2, 2, -1, -1};
+// Insert solution to programming project 2, chapter 04 here
+    
     /** The postfix string */
 
     /**
      * Convert a string from infix to postfix.
      * @param infix The infix expression
-     * @throws SyntaxErrorException
+     * @return The string converted to postfix
+     * @throws SyntaxErrorException if a syntax error is detected
      */
-    public static String convert(String infix) throws SyntaxErrorException {
+    public static String convert(String infix) {
         Deque<Character> operatorStack = new ArrayDeque<>();
         StringJoiner postfix = new StringJoiner(" ");
-        Scanner scan = new Scanner(infix);
-// Insert solution to programming exercise 2, section 4, chapter 4 here
+        var scan = new Scanner(infix);
+// Insert solution to programming exercise 2, section 4, chapter 04 here
         try {
             // Process each token in the infix string.
             String nextToken;
@@ -62,18 +68,18 @@ public class InfixToPostfixParens2 {
                 // Is it an operand?
                 if (Character.isJavaIdentifierStart(firstChar)
                         || Character.isDigit(firstChar)) {
-// Insert solution to programming exercise 2, section 4, chapter 3 here
+// Insert solution to programming exercise 2, section 4, chapter 04 here
                     postfix.add(nextToken);
                 } // Is it an operator?
                 else if (isOperator(firstChar)) {
-// Insert solution to programming exercise 2, section 4, chapter 3 here
+// Insert solution to programming exercise 2, section 4, chapter 04 here
                     processOperator(firstChar, operatorStack, postfix);
                 } else {
                     throw new SyntaxErrorException("Unexpected Character Encountered: "
                             + firstChar);
                 }
             } // End while.
-// Insert solution to programming exercise 2, section 4, chapter 3 here
+// Insert solution to programming exercise 2, section 4, chapter 04 here
             // Pop any remaining operators
             // and append them to postfix.
             while (!operatorStack.isEmpty()) {
@@ -99,7 +105,7 @@ public class InfixToPostfixParens2 {
      */
     private static void processOperator(char op, Deque<Character> operatorStack, 
             StringJoiner postfix) {
-        if (operatorStack.isEmpty() || op == '(') {
+        if (operatorStack.isEmpty() || isLeftParen(op)) {
             operatorStack.push(op);
         } else {
             // Peek the operator stack and
@@ -113,9 +119,13 @@ public class InfixToPostfixParens2 {
                 while (!operatorStack.isEmpty()
                         && precedence(op) <= precedence(topOp)) {
                     operatorStack.pop();
-                    if (topOp == '(') {
-                        // Matching '(' popped - exit loop.
-                        break;
+                    if (isLeftParen(topOp)) {
+                        if (isMatchingParen(topOp, op)) {
+                            break;
+                        } else {
+                            throw new SyntaxErrorException(Character.toString(topOp) 
+                            + " does not match " + Character.toString(op));
+                        }
                     }
                     postfix.add(Character.toString(topOp));
                     if (!operatorStack.isEmpty()) {
@@ -127,7 +137,7 @@ public class InfixToPostfixParens2 {
                 // assert: Operator stack is empty or
                 //         current operator precedence >
                 //         top of stack operator precedence.
-                if (op != ')') {
+                if (!isRightParen(op)) {
                     operatorStack.push(op);
                 }
             }
@@ -150,5 +160,20 @@ public class InfixToPostfixParens2 {
      */
     private static int precedence(char op) {
         return PRECEDENCE[OPERATORS.indexOf(op)];
+    }
+    
+    private static boolean isLeftParen(char c) {
+        return c == '(' || c == '[' || c == '{';
+    }
+    
+    private static boolean isRightParen(char c) {
+        return c == ')' || c == ']' || c == '}';
+    }
+    
+    private static boolean isMatchingParen(char c1, char c2) {
+        return (c1 == '(' && c2 == ')')
+                || (c1 == '[' && c2 == ']')
+                || (c1 == '{' && c2 == '}');
+        
     }
 }

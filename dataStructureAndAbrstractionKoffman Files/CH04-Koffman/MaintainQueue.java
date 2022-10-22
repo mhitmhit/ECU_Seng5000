@@ -6,10 +6,11 @@ import java.util.Queue;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.StringJoiner;
 
 /**
  * Class to maintain a queue of customers.
- * @author Koffman & Wolfgang
+ * @author Koffman and Wolfgang
  **/
 public class MaintainQueue {
 
@@ -28,8 +29,8 @@ public class MaintainQueue {
 
     /**
      * Performs the operations selected on queue customers.
-     * @pre  customers has been created.
-     * @post customers is modified based on user selections.
+     * precustomers has been created.
+     * postcustomers is modified based on user selections.
      */
     public void processCustomers() {
         String choice = "";
@@ -105,7 +106,7 @@ public class MaintainQueue {
     }
     
     /*</listing>*/
-// Insert solution to programming exercise 1, section 6, chapter 4 here
+// Insert solution to programming exercise 1, section 6, chapter 04 here
     
     public static void main(String[] args) {
         (new MaintainQueue()).processCustomers();

@@ -2,7 +2,7 @@ package KW.CH04;
 
 public class Exercise_4_2_3 {
 
-// Insert solution to programming exercise 3, section 2, chapter 4 here
+// Insert solution to programming exercise 3, section 2, chapter 04 here
 
     private static class TestCase {
 

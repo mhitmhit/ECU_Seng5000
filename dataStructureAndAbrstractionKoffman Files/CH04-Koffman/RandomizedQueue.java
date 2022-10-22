@@ -1,13 +1,20 @@
 package KW.CH04;
 
-import java.util.*;
+import java.util.AbstractQueue;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Queue;
+import java.util.Random;
 
 /**
- * Implements the Queue interface using a circular array.
+ * A randomized queue is similar to a queue, except that the item removed
+ * is chosen at random from the items in the queue.
+ * 
  * @param <E> The element type
- * @author Koffman and Wolfgang
+ * @author Koffman &amp; Wolfgang
  **/
-public class ArrayQueue2<E> extends AbstractQueue<E>
+public class RandomizedQueue<E> extends AbstractQueue<E>
         implements Queue<E> {
 
     // Data Fields
@@ -23,12 +30,17 @@ public class ArrayQueue2<E> extends AbstractQueue<E>
     private static final int DEFAULT_CAPACITY = 10;
     /** Array to hold the data. */
     private E[] theData;
+    private Random rand;
+    private int itemNumber;
 
     // Constructors
-    /** Construct a queue with the default initial capacity.
+    /**
+     * Construct a queue with the default initial capacity.
      */
-    public ArrayQueue2() {
+    public RandomizedQueue() {
         this(DEFAULT_CAPACITY);
+        rand = new Random();
+        itemNumber = -1;
     }
 
     /**
@@ -36,18 +48,29 @@ public class ArrayQueue2<E> extends AbstractQueue<E>
      * @param initCapacity The initial capacity
      */
     @SuppressWarnings("unchecked")
-    public ArrayQueue2(int initCapacity) {
+    public RandomizedQueue(int initCapacity) {
         capacity = initCapacity;
         theData = (E[]) new Object[capacity];
         front = 0;
         rear = capacity - 1;
         size = 0;
+        rand = new Random();
+    }
+    
+    /**
+     * Construct a queue with the contents of a Collection.The initial capacity 
+     * is set to the size of the collection.
+     * @param c Collection containing initial values.
+     */
+    public RandomizedQueue(Collection<E> c) {
+        this(c.size());
+        c.forEach(item -> offer(item));
     }
 
     // Public Methods
     /**
      * Inserts an item at the rear of the queue.
-     * post item is added to the rear of the queue.
+     * postitem is added to the rear of the queue.
      * @param item The element to add
      * @return true (always successful)
      */
@@ -59,41 +82,45 @@ public class ArrayQueue2<E> extends AbstractQueue<E>
         size++;
         rear = (rear + 1) % capacity;
         theData[rear] = item;
+        itemNumber = -1;
+        return true;
+    }
+    
+    /** Inserts an item at the front of the queue
+     * post: item is added the front of the queue
+     * @param item The element to add
+     * @return true (always successful)
+     */
+    public boolean addFirst(E item) {
+        if (size == capacity) {
+            reallocate();
+        }
+        size++;
+        front = (front - 1 + capacity) % capacity;
+        theData[front] = item;
+        itemNumber = -1;
         return true;
     }
 
+// Insert solution to programming project 13, chapter 04 here
+
     /**
-     * Returns the item at the front of the queue without removing it.
-     * @return The item at the front of the queue if successful;
-     * return null if the queue is empty
+     * Return the size of the queue
+     * @return The number of items in the queue
      */
     @Override
-    public E peek() {
-        if (size == 0) {
-            return null;
-        } else {
-            return theData[front];
-        }
+    public int size() {
+        return size;
     }
 
     /**
-     * Removes the entry at the front of the queue and returns it
-     * if the queue is not empty.
-     * postfront references item that was second in the queue.
-     * @return The item removed if successful or null if not
+     * Returns an iterator to the elements in the queue
+     * @return an iterator to the elements in the queue
      */
     @Override
-    public E poll() {
-        if (size == 0) {
-            return null;
-        }
-        E result = theData[front];
-        front = (front + 1) % capacity;
-        size--;
-        return result;
+    public Iterator<E> iterator() {
+        return new Iter();
     }
-
-//Exercise solution removed
 
     // Private Methods
     /**
@@ -106,14 +133,17 @@ public class ArrayQueue2<E> extends AbstractQueue<E>
     private void reallocate() {
         int newCapacity = 2 * capacity;
         E[] newData = (E[]) new Object[newCapacity];
-// Insert solution to programming exercise 3, section 7, chapter 04 here
+        int j = front;
+        for (int i = 0; i < size; i++) {
+            newData[i] = theData[j];
+            j = (j + 1) % capacity;
+        }
         front = 0;
         rear = size - 1;
         capacity = newCapacity;
         theData = newData;
     }
 
-    /*<listing chapter="4" number="5">*/
     /** Inner class to implement the Iterator&lt;E&gt; interface. */
     private class Iter implements Iterator<E> {
         // Data Fields
@@ -125,8 +155,9 @@ public class ArrayQueue2<E> extends AbstractQueue<E>
 
         // Methods
         // Constructor
-        /** Initializes the Iter object to reference the
-        first queue element.
+        /**
+         * Initializes the Iter object to reference the
+         * first queue element.
          */
         public Iter() {
             index = front;
@@ -144,7 +175,7 @@ public class ArrayQueue2<E> extends AbstractQueue<E>
         /**
          * Returns the next element in the queue.
          * prendex references the next element to access.
-         * post index and count are incremented.
+         * postindex and count are incremented.
          * @return The element with subscript index
          */
         @Override
@@ -159,14 +190,14 @@ public class ArrayQueue2<E> extends AbstractQueue<E>
         }
 
         /**
-         * Remove the item accessed by the Iter object -- not implemented.
-         * @throws UnsupportedOperationException when called
+         * Remove the item accessed by the Iter objectd
          */
         @Override
         public void remove() {
-            throw new UnsupportedOperationException();
+            RandomizedQueue.this.removeAtIndex((index - 1 + capacity) % capacity);
         }
     }
-    /*</listing>*/
+
+// Insert solution to programming project 13, chapter 04 here
+ 
 }
-/*</listing>*/

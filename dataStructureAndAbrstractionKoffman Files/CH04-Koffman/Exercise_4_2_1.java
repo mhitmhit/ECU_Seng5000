@@ -7,7 +7,7 @@ import java.util.StringJoiner;
 
 public class Exercise_4_2_1 {
 
-// Insert solution to programming exercise 1, section 2, chapter 4 here
+// Insert solution to programming exercise 1, section 2, chapter 04 here
 
     public static void main(String[] args) {
         String line;

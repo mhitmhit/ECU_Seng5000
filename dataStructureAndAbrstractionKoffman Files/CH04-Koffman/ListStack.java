@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
  *  equivalent to that given in java.util.Stack except that the
  *  underlying List is not publicly exposed.
  *  @param <E> The type of the elements in the stack
- *  @author Koffman & Wolfgang
+ *  @author Koffman and Wolfgang
  */
 public class ListStack<E> implements StackInt<E> {
 
@@ -27,7 +27,7 @@ public class ListStack<E> implements StackInt<E> {
 
     /**
      * Push an object onto the stack.
-     * @post The object is at the top of the stack.
+     * postThe object is at the top of the stack.
      * @param obj The object to be pushed
      * @return The object pushed
      */
@@ -52,7 +52,7 @@ public class ListStack<E> implements StackInt<E> {
 
     /**
      * Pop the top object off the stack.
-     * @post The object at the top of the stack is removed.
+     * postThe object at the top of the stack is removed.
      * @return The top object, which is removed
      * @throws NoSuchElementException if the stack is empty
      */
@@ -73,7 +73,8 @@ public class ListStack<E> implements StackInt<E> {
         return theData.isEmpty();
     }
     
-// Insert solution to programming exercise 2, section 3, chapter 4 here
+// Insert solution to programming exercise 2, section 3, chapter 04 here
             
+// Insert solution to programming project 7, chapter 04 here
 }
 /*</listing>*/

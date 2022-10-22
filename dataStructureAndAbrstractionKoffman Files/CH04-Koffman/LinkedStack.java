@@ -2,10 +2,11 @@
 package KW.CH04;
 
 import java.util.NoSuchElementException;
+import java.util.StringJoiner;
 
 /** Class to implement interface StackInt as a linked list.
  *  @param <E> The type of elements in the stack
- *  @author Koffman & Wolfgang
+ *  @author Koffman and Wolfgang
  **/
 public class LinkedStack<E> implements StackInt<E> {
 
@@ -44,9 +45,11 @@ public class LinkedStack<E> implements StackInt<E> {
     /** The reference to the first stack node. */
     private Node<E> topOfStackRef = null;
 
+// Insert solution to programming project 5, chapter 04 here
+    
     /**
      * Insert a new item on top of the stack.
-     * @post The new item is the top item on the stack.
+     * postThe new item is the top item on the stack.
      *       All other items are one position lower.
      * @param obj The item to be inserted
      * @return The item that was inserted
@@ -59,8 +62,8 @@ public class LinkedStack<E> implements StackInt<E> {
 
     /**
      * Remove and return the top item on the stack.
-     * @pre The stack is not empty.
-     * @post The top item on the stack has been
+     * prehe stack is not empty.
+     * postThe top item on the stack has been
      *       removed and the stack is one item smaller.
      * @return The top item on the stack
      * @throws NoSuchElementException if the stack is empty
@@ -78,8 +81,8 @@ public class LinkedStack<E> implements StackInt<E> {
 
     /**
      * Return the top item on the stack.
-     * @pre The stack is not empty.
-     * @post The stack remains unchanged.
+     * prehe stack is not empty.
+     * postThe stack remains unchanged.
      * @return The top item on the stack
      * @throws NoSuchElementException if the stack is empty
      */
@@ -101,6 +104,10 @@ public class LinkedStack<E> implements StackInt<E> {
         return topOfStackRef == null;
     }
 
-// Insert solution to programming exercise 1, section 4, chapter 4 here
+// Insert solution to programming exercise 1, section 3, chapter 04 here
+    
+// Insert solution to programming project 3, chapter 04 here
+    
+// Insert solution to programming project 7, chapter 04 here
 }
 /*</listing>*/
