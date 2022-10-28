@@ -110,6 +110,53 @@ public class LinkedListRec<E> {
         replace(head, oldObj, newObj);
     }
 
+    
+    
+    
+    
+    
+    
+    
+    // ------------------------------------------------------------------ Add After Methods by Yassine, Assignemnt A4 Q5
+    /**
+     * finds the target Node by matching the Node data
+     * and adds a new node with use passed Data
+     * 
+     * @param existingData to match the existing node
+     * @param newData to create the new Node
+     */
+    private void addAfter(Node<E> evaluatedNode, E existingData, E newData) {
+    	if (evaluatedNode.data.equals(existingData)) {
+    		Node<E> temp = new Node<>(newData, evaluatedNode.next );
+    		evaluatedNode.next = temp;
+    	} else {
+    		addAfter(evaluatedNode.next, existingData, newData);
+    	}
+    }
+    
+    /**
+     * Wrapper method for adding a new node
+     * after a specified node
+     * 
+     * @param existingNode to add after
+     * @param newNode to add
+     */
+    public void addAfter(Node<E> existingNode, Node<E> newNode) {
+	    if (head == null) {
+	    	System.out.println("list is empty");
+	    } else {
+	    	addAfter(head, existingNode.data, newNode.data);
+	    }	
+    }
+    // ----------------------------------------------------------------------------------------End of Assignment problem
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * Adds a new node to the end of a list.
      * @param head The head of the current list
