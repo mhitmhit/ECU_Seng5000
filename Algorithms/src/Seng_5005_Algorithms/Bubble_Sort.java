@@ -6,6 +6,9 @@ public class Bubble_Sort {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		// each 2 elements are compared and sorted
+		
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
 		
 		numbers.add(6);

@@ -6,6 +6,10 @@ public class Insertion_Sort {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		// start at 2nd element and sort it compared to previous elements
+		// goes to 3rd element and sort it compared to previous elements
+		
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
 		
 		numbers.add(6);
