@@ -21,8 +21,6 @@ import java.util.function.Consumer;
  *
  */
 public class BinaryTree<E> 
-// Insert solution to programming project 4, chapter 06 here
-// Insert solution to programming project 7, chapter 06 here
 {
 
     /*<listing chapter="6" number="1">*/
@@ -101,7 +99,13 @@ public class BinaryTree<E>
      * The root of the binary tree
      */
     protected Node<E> root;
-
+    // ---------------------------------------------------------------------------------------Added by Yassine
+    /**
+     * Added String builder to store return value of:
+     *  - preOrderTraverse
+     */
+    private StringBuilder sb = new StringBuilder();
+    // ---------------------------------------------------------------------------------------Added by Yassine End
     /**
      * Construct an empty BinaryTree
      */
@@ -206,32 +210,69 @@ public class BinaryTree<E>
 
     @Override
     public String toString() {
-        var sb = new StringBuilder();
-        preOrderTraverse((e, d) -> {
-            for (int i = 1; i < d; i++) {
-                sb.append("  ");
-            }
-            sb.append(e);
-            sb.append("\n");
-        });
-        return sb.toString();
-    }
+    	  StringBuilder sb = new StringBuilder();
+    	  preOrderTraverse(root, 1, sb);
+    	  return sb.toString();
+    	}
+
 // -------------------------------------------------------------------------------------------------------Added by Yassine
-    
+    /**
+     * PreOrderTraverse method to call 
+     * recursive Pre Order Traverse method.
+     * prints out the result of the PreOrder Traverse
+     */
     public void preOrderTraverse() {
-        preOrderTraverse(root);
+        preOrderTraverse(root, 1, sb);
+        System.out.println("result of PreOrderTraverse Method Stored in StringBuilder: " + sb);
     }
 
+    /**
+     * Recursive Method to traverse the Tree, starting from node given by user.
+     * @param node root Node to start PreOrder Traverse
+     * @param depth: level of preOrder we want
+     * @param sb to build the return result string
+     */
+    private void preOrderTraverse(Node<E> node, int depth, StringBuilder sb) {
+//    	  for (int i = 1; i < depth; i++) {
+//    	    sb.append(","); // indentation
+//    	  }
+    	  if (node == null) {
+    	    //sb.append("null\n");
+    	  } else {
+    	    sb.append(node.toString());
+    	    sb.append(" ");
+    	    preOrderTraverse(node.left, depth + 1, sb);
+    	    preOrderTraverse(node.right, depth + 1, sb);
+    	  }
+    	}
     
-    private void preOrderTraverse(Node<E> node) {
-        if (node == null) {
-            
-        } else {
-            
-        }
+    /**
+     * InOrderTraverse method to call
+     * recursive In Order Traverse method
+     * prints out the result of the InOrder Traverse
+     */
+    public void inOrderTraverse() {
+    	inOrderTraverse(root, sb);
+    	System.out.println("result of InOrderTraverse Method stored in StringBuilder: " + sb);
+    	
     }
-   
-
+    
+    /**
+     * Recursive Method to traverse the Tree with root specified by user
+     * @param node root Node of the Tree
+     * @param sb to build the return result string
+     */
+    public void inOrderTraverse(Node<E> node, StringBuilder sb) {
+    	if (node == null) {
+    	    return;
+    	} else {
+    		inOrderTraverse(node.left, sb);
+    		sb.append(node.toString());
+    		sb.append(" ");
+    		inOrderTraverse(node.right, sb);
+    		
+    	}
+    }
 // -------------------------------------------------------------------------------------------------------Added by Yassine END
 
 // Insert solution to programming exercise 5, section 4, chapter 06 here

@@ -30,11 +30,22 @@ public class Driver_Yassine {
 		System.out.println("D   E  F  G ");
 		System.out.println();
 		
-		System.out.println(aTree.getData());
-		System.out.println(aTree.getLeftSubtree().getData());
-		System.out.println(dTree.getLeftSubtree());
-		System.out.println(aTree.root);
+//		System.out.println(aTree.getData());
+//		System.out.println(aTree.getLeftSubtree().getData());
+//		System.out.println(dTree.getLeftSubtree());
+		System.out.println(aTree.root.toString());
 		
+		// PreOrder Traverse testing:
+//		System.out.println("PreOrder method from A should return: A, B, D, E, C, F, G");
+//		aTree.preOrderTraverse();
+//		System.out.println("PreOrder method from B should return: B, D, E");
+//		bTree.preOrderTraverse();
+		
+		// InOrder Traverse testing:
+		System.out.println("InOrder method from A should return: D, B, E, A, F, C, G");
+		aTree.inOrderTraverse();
+		System.out.println("InOrder method from B should return: D, B, E");
+		bTree.inOrderTraverse();
 	}
 
 }
