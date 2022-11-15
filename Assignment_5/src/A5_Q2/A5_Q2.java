@@ -16,7 +16,7 @@ public class A5_Q2 {
 
     // Data Fields
     /**
-     * Tree for storing the index.
+     * index sorting Tree
      */
     private final TreeSet<Object> index;
     /**
