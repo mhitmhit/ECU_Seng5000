@@ -5,7 +5,8 @@ public class A4_Q2_B2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String value = InfixToPostfixParens.convert( "(x+15)*(3*(4-(5+7/2)))" );
+		//String value = InfixToPostfixParens.convert( "(x+15)*(3*(4-(5+7/2)))" );
+		String value = InfixToPostfixParens.convert( "(G-W)*(F+Q)/((A-B)*(X-Y))" );
 		System.out.println("InFixToPostfix class result is: " + value);
 		
 		/**
