@@ -30,6 +30,15 @@ public class BinarySearchTreeWithRotate<E extends Comparable<E>>
         temp.right = root;
         return temp;
     }
+    
+ // *********************************************************************************************Inserted Code for rotate Left
+    protected Node<E> rotateLeft(Node<E> root){
+		Node<E> temp = root.right;
+		root.right = temp.left;
+		temp.left = root;
+		return temp;
+	}
+ // *********************************************************************************************Inserted Code END for rotate Left
 
 // Insert solution to programming exercise 1, section 1, chapter 09 here
 }

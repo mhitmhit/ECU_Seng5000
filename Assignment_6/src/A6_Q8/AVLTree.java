@@ -112,8 +112,19 @@ public class AVLTree<E extends Comparable<E>>
                 }
             }
             return localRoot; // Rebalance not needed.
-        } else { // item > data
-// Insert solution to programming exercise 2, section 2, chapter 09 here
+        } else { 
+// *********************************************************************************************Inserted Code for item > data use case
+        	// item > data
+        	localRoot.right = add((AVLNode<E>) localRoot.right, item);
+        	if (increase) {
+        		incrementBalance(localRoot);
+        		if (localRoot.balance > AVLNode.RIGHT_HEAVY) {
+        			increase = false;
+        			return rebalanceRight(localRoot);
+        		}
+        	}
+        	return localRoot;
+// *********************************************************************************************Inserted Code End for item > data use case
         }
     }
 
@@ -160,10 +171,50 @@ public class AVLTree<E extends Comparable<E>>
         // Now rotate the local root right.
         return (AVLNode<E>) rotateRight(localRoot);
     }
-    /*</listing>*/
-
-// Insert solution to programming exercise 1, section 2, chapter 09 here
-
+ // *********************************************************************************************Inserted Code for rebalance Right
+    /**
+     * Method to rebalance right.
+     * prelocalRoot is the root of an AVL subtree that is
+     *      critically right-heavy.
+     * postBalance is restored.
+     * @param localRoot Root of the AVL subtree
+     *        that needs rebalancing
+     * @return a new localRoot
+     */
+    private AVLNode<E> rebalanceRight(AVLNode<E> localRoot) {
+    	//Obtain reference to right child
+		var rightChild = (AVLNode<E>) localRoot.right;
+		//see whether right-left heavy
+		if(rightChild.balance < AVLNode.BALANCED){
+			//Obtain reference to right-left child.
+			AVLNode<E> RightLeftChild = (AVLNode<E>) rightChild.left;
+			// Adjust the balances to be their new values after
+			// the rotations are performed
+			if(RightLeftChild.balance < AVLNode.BALANCED){
+				rightChild.balance = AVLNode.RIGHT_HEAVY;
+				RightLeftChild.balance = AVLNode.BALANCED;
+				localRoot.balance = AVLNode.BALANCED;
+			} else if (RightLeftChild.balance > AVLNode.BALANCED){
+				rightChild.balance = AVLNode.BALANCED;
+				RightLeftChild.balance = AVLNode.BALANCED;
+				localRoot.balance = AVLNode.LEFT_HEAVY;
+			} else {
+				rightChild.balance = AVLNode.BALANCED;
+				localRoot.balance = AVLNode.BALANCED;
+			}
+			//Perform right rotation
+			localRoot.right = rotateRight(rightChild);
+		 } else { //Left-Left case
+		    // In this case the rightChild (the new root)
+		    // and the root (new right child) will both be balanced
+		    // after the rotation.
+			rightChild.balance = AVLNode.BALANCED;
+			localRoot.balance = AVLNode.BALANCED;
+		}
+		//now rotate the local root left
+		return (AVLNode<E>) rotateLeft(localRoot);
+    }
+ // *********************************************************************************************Inserted Code End for rebalance right
     /**
      * Method to decrement the balance field and to reset the value of
      * increase.
@@ -183,6 +234,28 @@ public class AVLTree<E extends Comparable<E>>
             increase = false;
         }
     }
+    
+ // *********************************************************************************************Inserted Code  for Increment Balance
+    /**
+     * Method to increment the balance field and to reset the value of
+     * increase.
+     * prehe balance field was correct prior to an insertion [or
+     *      removal,] and an item is either been added to the right[
+     *      or removed from the left].
+     * postThe balance is incremented and the increase flags is set
+     *       to false if the overall height of this subtree has not
+     *       changed.
+     * @param node The AVL node whose balance is to be incremented
+     */
+    private void incrementBalance(AVLNode<E> node) {
+    	// Increment the balance
+    	node.balance++;
+    	if (node.balance == AVLNode.BALANCED) {
+            // If now balanced, overall height has not increased.
+            increase = false;
+        }
+    }
+ // *********************************************************************************************Inserted Code End for Increment Balance
 
 // Insert solution to programming exercise 3, section 2, chapter 09 here
 
