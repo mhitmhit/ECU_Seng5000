@@ -6,7 +6,7 @@ public class A4_Q2_A2 {
 		// TODO Auto-generated method stub
 
 		//int value = PostfixEvaluator.eval("5 4 * 6 7 + 4 2 / - *");
-		int value = PostfixEvaluator.eval("8 12 3 * + 5 -");
+		int value = PostfixEvaluator.eval("2 6 13 * + 5 / 8 3 * +");
 		System.out.println("PostFixEvaluator class result is: " + value);
 		
 		/**

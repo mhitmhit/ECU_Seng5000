@@ -5,11 +5,15 @@ public class AVLTree_Driver {
 	public static void main(String[] args) {
 		// Integer AVL Tree
 		AVLTree<Integer> myTestTree1 = new AVLTree<Integer>();
-		myTestTree1.add(9);
-		myTestTree1.add(7);
-		myTestTree1.add(11);
-		myTestTree1.add(19);
-		myTestTree1.add(209);
+		myTestTree1.add(10);
+		myTestTree1.add(20);
+		myTestTree1.add(30);
+		myTestTree1.add(40);
+		myTestTree1.add(50);
+		myTestTree1.add(60);
+		myTestTree1.add(70);
+		myTestTree1.add(55);
+		myTestTree1.add(53);
 		System.out.println(myTestTree1);
 		System.out.println("------------------------------------------------");
 		
